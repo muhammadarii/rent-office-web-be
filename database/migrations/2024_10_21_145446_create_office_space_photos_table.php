@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('office_space_photos', function (Blueprint $table) {
             $table->id();
-            $table->string('path');
+            $table->string('photo');
             $table->foreignId('office_space_id')->constrained()->cascadeOnDelete();
             $table->softDeletes();
             $table->timestamps();
