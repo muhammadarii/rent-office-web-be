@@ -6,6 +6,7 @@ use App\Filament\Resources\BookingTransactionResource\Pages;
 use App\Filament\Resources\BookingTransactionResource\RelationManagers;
 use App\Models\BookingTransaction;
 use Filament\Forms;
+use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -24,6 +25,46 @@ class BookingTransactionResource extends Resource
         return $form
             ->schema([
                 //
+                Forms\Components\TextInput::make('name')
+                ->required()
+                ->maxLength(255),
+
+                Forms\Components\TextInput::make('booking_trx_id')
+                ->required()
+                ->maxLength(255),
+
+                Forms\Components\TextInput::make('phone_number')
+                ->required()
+                ->maxLength(255),
+
+                Forms\Components\TextInput::make('total_amount')
+                ->required()
+                ->numeric()
+                ->prefix('IDR'),
+
+                Forms\Components\TextInput::make('duration')
+                ->required()
+                ->numeric()
+                ->prefix('Days'),
+
+                Forms\Components\DatePicker::make('started_at')
+                ->required(),
+
+                Forms\Components\DatePicker::make('ended_at')
+                ->required(),
+
+                Forms\Components\Select::make('is_paid')
+                ->options([
+                    true => 'Paid',
+                    false => 'Unpaid',
+                ])
+                ->required(),
+
+                Forms\Components\Select::make('office_space_id')
+                ->relationship('officeSpace', 'name')
+                ->searchable()
+                ->preload()
+                ->required(),
             ]);
     }
 
@@ -32,6 +73,24 @@ class BookingTransactionResource extends Resource
         return $table
             ->columns([
                 //
+                Tables\Columns\TextColumn::make('booking_trx_id')
+                    ->sortable(),
+                
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+
+                Tables\Columns\TextColumn::make('office_space.name'),
+
+                Tables\Columns\TextColumn::make('started_at')
+                    ->date(),
+
+                Tables\Columns\IconColumn::make('is_paid')
+                    ->boolean()
+                    ->trueColor('success')
+                    ->falseColor('danger')
+                    ->trueIcon('heroicon-s-check-circle')
+                    ->falseIcon('heroicon-s-x-circle')
+                    ->label('Sudah Bayar?'),
             ])
             ->filters([
                 //
