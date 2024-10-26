@@ -1325,15 +1325,24 @@ video {
   transition-duration: 300ms;
 }
 
-body{
+@font-face {
   font-family: "Poppins";
+  src: url('/path/to/fonts/Poppins.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
   font-display: swap;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
   color: #000929;
   background-color: #F7F7FD;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
+
+
 
 .placeholder\:font-normal::-moz-placeholder {
   font-weight: 400;
