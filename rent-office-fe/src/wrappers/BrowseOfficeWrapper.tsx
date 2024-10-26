@@ -6,7 +6,7 @@ export default function BrowseOfficeWrapper() {
         id="Fresh-Space"
         className="flex flex-col gap-[30px] w-full max-w-[1130px] mx-auto mt-[100px] mb-[120px]"
       >
-        <h2 className="font-bold text-[32px] leading-[48px] text-nowrap text-center">
+        <h2 className="font-extrabold text-[32px] leading-[48px] text-nowrap text-center">
           Browse Our Fresh Space.
           <br />
           For Your Better Productivity.

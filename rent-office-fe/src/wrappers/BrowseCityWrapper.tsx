@@ -5,13 +5,13 @@ export default function BrowseCityWrapper() {
     return (
         <section id="Cities" className="flex flex-col gap-[30px] mt-[100px]">
         <div className="w-full max-w-[1130px] mx-auto flex items-center justify-between">
-          <h2 className="font-bold text-[32px] leading-[48px] text-nowrap">
+          <h2 className="font-extrabold text-[32px] leading-[48px] text-nowrap">
             You Can Choose <br />
             Our Favorite Cities
           </h2>
           <a
             href="#"
-            className="rounded-full rounded-full py-3 px-5 bg-white font-bold"
+            className="rounded-full rounded-full py-3 px-5 bg-white font-extrabold"
           >
             Explore All City
           </a>
