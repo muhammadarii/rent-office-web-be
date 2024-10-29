@@ -1,7 +1,7 @@
 export interface Office {
     id: number;
     price: number;
-    duraion: number;
+    duration: number;
     name: string;
     slug: string;
     city: City,
@@ -9,6 +9,7 @@ export interface Office {
     photos: Photo[],
     benefits: Benefit[],
     about: string,
+    popular: string
 }
 
 interface Photo {

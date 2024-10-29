@@ -24,6 +24,7 @@ class OfficeSpace extends Model
         'about',
         'slug',
         'city_id',
+        'is_popular',
     ];
 
     public function setNameAttribute($value)

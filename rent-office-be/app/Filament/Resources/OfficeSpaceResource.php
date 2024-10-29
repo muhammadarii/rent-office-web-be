@@ -85,6 +85,13 @@ class OfficeSpaceResource extends Resource
                     false => 'Available',
                 ])
                 ->required(),
+                
+                Forms\Components\Select::make('is_popular')
+                ->options([
+                    true => 'Popular',
+                    false => 'Not Popular',
+                ])
+                ->required(),
             ]);
     }
 
@@ -107,6 +114,14 @@ class OfficeSpaceResource extends Resource
                     ->trueIcon('heroicon-s-x-circle')
                     ->falseIcon('heroicon-s-check-circle')
                     ->label('Available'),
+                
+                Tables\Columns\IconColumn::make('is_popular')
+                    ->boolean()
+                    ->trueColor('success')
+                    ->falseColor('danger')
+                    ->trueIcon('heroicon-s-check-circle')
+                    ->falseIcon('heroicon-s-x-circle')
+                    ->label('Popular'),
             ])
             ->filters([
                 //
