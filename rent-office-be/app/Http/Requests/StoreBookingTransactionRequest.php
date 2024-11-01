@@ -29,4 +29,4 @@ class StoreBookingTransactionRequest extends FormRequest
             'total_amount' => 'required|integer',
         ];
     }
-} 
+}
