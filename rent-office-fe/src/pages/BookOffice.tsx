@@ -1,16 +1,15 @@
-import { useNavigate, useParams } from "react-router-dom";
-import Navbar from "../components/Navbar";
 import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { Office } from "../types/type";
-import { z } from "zod";
 import axios from "axios";
+import { z } from "zod";
 import { bookingSchema } from "../types/validationBooking";
 
 export default function BookOffice() {
   const { slug } = useParams<{ slug: string }>();
   const [office, setOffice] = useState<Office | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [Loading, setLoading] = useState(true);
+  const [Error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -21,7 +20,7 @@ export default function BookOffice() {
     totalAmountWithUniqueCode: 0,
   });
 
-  const [formErrors, setFormErrors] = useState<z.ZodIssue[]>([]);
+  const [fomrErrors, setFormErrors] = useState<z.ZodIssue[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const [uniqueCode, setUniqueCode] = useState<number>(0);
@@ -38,7 +37,6 @@ export default function BookOffice() {
       })
       .then((response) => {
         console.log("Office data fetched successfully:", response.data.data);
-
         setOffice(response.data.data);
 
         const officeSpaceId = response.data.data.id;
@@ -51,7 +49,7 @@ export default function BookOffice() {
         setFormData((prevData) => ({
           ...prevData,
           office_space_id: officeSpaceId,
-          totalAmountWithUniqueCode: grandTotal,
+          total_amount: grandTotal,
         }));
         setLoading(false);
       })
@@ -60,23 +58,24 @@ export default function BookOffice() {
           console.error("Error fetching office data:", error.message);
           setError(error.message);
         } else {
-          console.error("Unexpected error", error);
-          setError("An unexpected error occurred");
+          console.error("Unexpected error:", error);
+          setError("An unexpected error occurred.");
         }
         setLoading(false);
       });
   }, [slug]);
+  console.log("Submitting formData:", formData);
 
-  if (loading) {
+  if (Loading) {
     return <p>Loading...</p>;
   }
-  if (error) {
-    return <p>Error loading data: {error}</p>;
+  if (Error) {
+    return <p>Error loading data: {Error}</p>;
   }
+
   if (!office) {
     return <p>No office found</p>;
   }
-
   const baseURL = "http://127.0.0.1:8000/storage/";
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -86,7 +85,7 @@ export default function BookOffice() {
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handlesSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     console.log("Validating form data...");
@@ -98,6 +97,7 @@ export default function BookOffice() {
       return;
     }
     console.log("Form data is valid. Submitting...", formData);
+
     setIsLoading(true);
 
     try {
@@ -112,22 +112,23 @@ export default function BookOffice() {
           },
         }
       );
-
-      console.log("Form data submitted successfully:", response.data);
+      console.log("Form submitted successfully:", response.data.data);
 
       navigate("/success-booking", {
         state: {
           office,
-          booking: response.data,
+          booking: response.data.data,
         },
       });
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         console.error("Error submitting form:", error.message);
+        console.error("Error details:", error.response?.data);
+        setError(error.response?.data.message || error.message);
         setError(error.message);
       } else {
-        console.error("Unexpected error", error);
-        setError("An unexpected error occurred");
+        console.error("Unexpected error:", error);
+        setError("An unexpected error occurred.");
       }
     } finally {
       setIsLoading(false);
@@ -136,7 +137,6 @@ export default function BookOffice() {
 
   return (
     <>
-      <Navbar />
       <div
         id="Banner"
         className="relative w-full h-[240px] flex items-center shrink-0 overflow-hidden -mb-[50px]"
@@ -146,13 +146,13 @@ export default function BookOffice() {
         </h1>
         <div className="absolute w-full h-full bg-[linear-gradient(180deg,_rgba(0,0,0,0)_0%,#000000_91.83%)] z-10" />
         <img
-          src={`${baseURL}/${office.thumbnail}`}
+          src="/assets/images/thumbnails/thumbnail-details-4.png"
           className="absolute w-full h-full object-cover object-top"
           alt=""
         />
       </div>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={handlesSubmit}
         className="relative flex justify-center max-w-[1130px] mx-auto gap-[30px] mb-20 z-20"
       >
         <div className="flex flex-col shrink-0 w-[500px] h-fit rounded-[20px] border border-[#E0DEF7] p-[30px] gap-[30px] bg-white">
@@ -198,7 +198,7 @@ export default function BookOffice() {
                   className="appearance-none outline-none w-full py-3 font-semibold placeholder:font-normal placeholder:text-[#000929]"
                   placeholder="Write your complete name"
                 />
-                {formErrors.find((error) => error.path.includes("name")) && (
+                {fomrErrors.find((error) => error.path.includes("name")) && (
                   <p className="text-red-500">Name is required</p>
                 )}
               </div>
@@ -222,7 +222,7 @@ export default function BookOffice() {
                   className="appearance-none outline-none w-full py-3 font-semibold placeholder:font-normal placeholder:text-[#000929]"
                   placeholder="Write your valid number"
                 />
-                {formErrors.find((error) =>
+                {fomrErrors.find((error) =>
                   error.path.includes("phone_number")
                 ) && <p className="text-red-500">Phone Number is required</p>}
               </div>
@@ -245,7 +245,7 @@ export default function BookOffice() {
                   id="date"
                   className="relative appearance-none outline-none w-full py-3 font-semibold [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:opacity-0"
                 />
-                {formErrors.find((error) =>
+                {fomrErrors.find((error) =>
                   error.path.includes("started_at")
                 ) && <p className="text-red-500">Date is required</p>}
               </div>
@@ -383,7 +383,7 @@ export default function BookOffice() {
             disabled={isLoading}
             className="flex items-center justify-center w-full rounded-full p-[16px_26px] gap-3 bg-[#0D903A] font-bold text-[#F7F7FD]"
           >
-            <span>{isLoading ? "Loading..." : "I've Already Paid"}</span>
+            <span>{isLoading ? "Loading..." : "I’ve Already Paid"}</span>
           </button>
         </div>
       </form>
