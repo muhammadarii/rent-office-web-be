@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Office } from "../types/type";
-import axios from "axios";
+import apiCLient from "../services/apiService";
 
 export default function Details() {
   const baseURL = "http://127.0.0.1:8000/storage/";
@@ -14,12 +14,8 @@ export default function Details() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    axios
-      .get(`http://127.0.0.1:8000/api/office/${slug}`, {
-        headers: {
-          "X-API-KEY": "23g4k2j3g4kjgj23gk243jg4jklj",
-        },
-      })
+    apiCLient
+      .get(`/office/${slug}`)
       .then((response) => {
         setOffice(response.data.data);
         setLoading(false);
