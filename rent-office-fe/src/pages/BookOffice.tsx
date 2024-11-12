@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Office } from "../types/type";
-import axios from "axios";
 import { z } from "zod";
 import { bookingSchema } from "../types/validationBooking";
+import apiCLient, { isAxiosError } from "../services/apiService";
 
 export default function BookOffice() {
   const { slug } = useParams<{ slug: string }>();
@@ -29,12 +29,8 @@ export default function BookOffice() {
 
   useEffect(() => {
     console.log("Fetching office data...");
-    axios
-      .get(`http://127.0.0.1:8000/api/office/${slug}`, {
-        headers: {
-          "X-API-KEY": "23g4k2j3g4kjgj23gk243jg4jklj",
-        },
-      })
+    apiCLient
+      .get(`/office/${slug}`)
       .then((response) => {
         console.log("Office data fetched successfully:", response.data.data);
         setOffice(response.data.data);
@@ -54,7 +50,7 @@ export default function BookOffice() {
         setLoading(false);
       })
       .catch((error: unknown) => {
-        if (axios.isAxiosError(error)) {
+        if (isAxiosError(error)) {
           console.error("Error fetching office data:", error.message);
           setError(error.message);
         } else {
@@ -101,17 +97,9 @@ export default function BookOffice() {
     setIsLoading(true);
 
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/booking-transaction",
-        {
-          ...formData,
-        },
-        {
-          headers: {
-            "X-API-KEY": "23g4k2j3g4kjgj23gk243jg4jklj",
-          },
-        }
-      );
+      const response = await apiCLient.post("/booking-transaction", {
+        ...formData,
+      });
       console.log("Form submitted successfully:", response.data.data);
 
       navigate("/success-booking", {
@@ -121,7 +109,7 @@ export default function BookOffice() {
         },
       });
     } catch (error: unknown) {
-      if (axios.isAxiosError(error)) {
+      if (isAxiosError(error)) {
         console.error("Error submitting form:", error.message);
         console.error("Error details:", error.response?.data);
         setError(error.response?.data.message || error.message);
