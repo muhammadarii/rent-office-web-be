@@ -4,6 +4,8 @@ import apiClient from "../services/apiService";
 import { Office } from "../types/type";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer";
+import Loader from "../components/ui/Loader";
+import Header from "../components/OfficeDetails/Header";
 
 const OfficeDetails = () => {
   const baseURL = "http://127.0.0.1:8000/storage/";
@@ -27,7 +29,11 @@ const OfficeDetails = () => {
   }, [slug]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="flex items-center justify-center">
+        <Loader />
+      </div>
+    );
   }
   if (error) {
     return <p>Error loading data: {error}</p>;
@@ -38,6 +44,7 @@ const OfficeDetails = () => {
   return (
     <>
       <Navbar />
+      <Header />
       <Footer />
     </>
   );

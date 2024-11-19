@@ -24,7 +24,7 @@ const CityCard = ({ city }: CityCardProps) => {
           </p>
         </div>
         <Link to={`/city/${city.slug}`}>
-          <button className="z-10 absolute bg-[#8DD3BB] w-[50px] h-[20px] md:w-[80px] md:h-[30px] rounded-sm bottom-5 right-[10px] md:right-[30px] text-black text-[10px]">
+          <button className="z-10 absolute bg-[#8DD3BB] w-[50px] h-[20px] md:w-[80px] md:h-[30px] rounded-sm bottom-5 right-[10px] md:right-[30px] text-black text-[10px] hover:bg-white ">
             More
           </button>
         </Link>

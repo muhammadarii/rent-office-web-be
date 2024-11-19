@@ -13,10 +13,10 @@ const Footer = () => {
         <div className="justify-items-center mt-[100px] cursor-pointer">
           <img src={Logo} alt="logo" />
           <div className="flex gap-3 mt-4">
-            <AiFillInstagram className="md:w-5 md:h-5" />
-            <AiFillFacebook className="md:w-5 md:h-5" />
-            <AiFillYoutube className="md:w-5 md:h-5" />
-            <AiFillTwitterCircle className="md:w-5 md:h-5" />
+            <AiFillInstagram className="md:w-5 md:h-5 hover:w-8 hover:h-8" />
+            <AiFillFacebook className="md:w-5 md:h-5 hover:w-8 hover:h-8" />
+            <AiFillYoutube className="md:w-5 md:h-5 hover:w-8 hover:h-8" />
+            <AiFillTwitterCircle className="md:w-5 md:h-5 hover:w-8 hover:h-8" />
           </div>
         </div>
         <div className="flex-col gap-2 mt-24 cursor-pointer hidden md:flex">
