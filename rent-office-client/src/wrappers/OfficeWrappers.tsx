@@ -4,6 +4,7 @@ import OfficeCard from "../components/Home/OfficeCard";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../redux/store";
 import { fetchOffices } from "../redux/slice/officesSlice";
+import Loader from "../components/ui/Loader";
 
 const OfficeWrappers = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -16,7 +17,11 @@ const OfficeWrappers = () => {
   }, [dispatch]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="flex items-center justify-center">
+        <Loader />
+      </div>
+    );
   }
 
   if (error) {
@@ -25,7 +30,7 @@ const OfficeWrappers = () => {
 
   return (
     <>
-      <h2 className="font-extrabold font-poppins text-[32px] leading-[48px] text-center my-5">
+      <h2 className="font-extrabold font-poppins md:text-[32px] md:leading-[48px] text-center my-10">
         Browse Our Fresh Space.
         <br />
         For Your Better Productivity.

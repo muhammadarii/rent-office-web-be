@@ -4,6 +4,8 @@ import CityCard from "../components/Home/CityCard";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../redux/store";
 import { fetchCities } from "../redux/slice/citiesSlice";
+import { Link } from "react-router-dom";
+import Loader from "../components/ui/Loader";
 
 const CityWrappers = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -16,7 +18,11 @@ const CityWrappers = () => {
   }, [dispatch]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="flex items-center justify-center">
+        <Loader />
+      </div>
+    );
   }
 
   if (error) {
@@ -25,9 +31,11 @@ const CityWrappers = () => {
 
   return (
     <>
-      <div className="flex flex-row overflow-x-scroll scrollbar-hide mx-4 mt-[-100px] gap-4">
+      <div className="flex flex-row overflow-x-scroll scrollbar-hide mx-4 mt-14 mb-8 gap-4">
         {cities.map((city) => (
-          <CityCard city={city} />
+          <Link to={`/city/${city.slug}`}>
+            <CityCard city={city} />
+          </Link>
         ))}
       </div>
     </>
