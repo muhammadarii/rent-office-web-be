@@ -39,10 +39,7 @@ const Header = () => {
       <div className="bg-white w-[800px] h-[250px] rounded-xl absolute top-[100%] left-[50%] translate-x-[-50%] translate-y-[-50%] shadow-xl border-2 border-[#8DD3BB]">
         <div className="absolute top-[50%] left-[40%] translate-x-[-50%] translate-y-[-50%]">
           <h1 className="text-2xl font-bold">Great Office In</h1>
-          <h1 className="text-5xl font-bold">{city.name} City</h1>
-          <p className="text-sm font-semibold">
-            {city.officeSpaces_count} Office Spaces
-          </p>
+          <h1 className="text-5xl font-bold mb-4">{city.name} City</h1>
           <span>
             Kantor yang tepat dapat memberikan impact pekerjaan menjadi lebih
             baik dan sehat dalam tumbuhkan karir.

@@ -40,7 +40,7 @@ const Facility = () => {
               </div>
               <div className="flex flex-col justify-center items-center text-center mb-4">
                 <h1 className="font-bold md:text-[30px]">{item.title}</h1>
-                <span className="text-xs">{item.desc}</span>
+                <span className="text-xs md:text-sm">{item.desc}</span>
               </div>
             </div>
           ))}

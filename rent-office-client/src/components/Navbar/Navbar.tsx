@@ -33,7 +33,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`flex justify-between items-center px-6 py-3 md:py-4 fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+      className={`flex justify-between items-center px-6 py-3 md:py-4 fixed top-0 left-0 right-0 z-50 transition-colors duration-300 mx-auto container ${
         isScrolled
           ? "bg-black backdrop-blur-2xl bg-opacity-40"
           : "bg-transparent"
