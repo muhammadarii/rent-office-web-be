@@ -1,11 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import citiesReducer from "../redux/slice/citiesSlice";
 import officesReducer from "../redux/slice/officesSlice";
+import detailsCitiesReducer from "../redux/slice/citydetailsSlice";
+import detailsOfficesReducer from "../redux/slice/officeDetailsSlice";
 
 export const store = configureStore({
   reducer: {
     cities: citiesReducer,
     offices: officesReducer,
+    detailsCities: detailsCitiesReducer,
+    detailsOffices: detailsOfficesReducer,
   },
 });
 

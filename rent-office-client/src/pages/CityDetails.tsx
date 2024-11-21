@@ -2,32 +2,26 @@ import { Link, useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import OfficeCard from "../components/Home/OfficeCard";
 import Navbar from "../components/Navbar/Navbar";
-import { useEffect, useState } from "react";
-import apiClient from "../services/apiService";
-import { City } from "../types/type";
-import Loader from "../components/ui/Loader";
+
 import Header from "../components/CityDetails/Header";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../redux/store";
+import { useEffect } from "react";
+import { fetchCityDetailsBySlug } from "../redux/slice/citydetailsSlice";
+import Loader from "../components/ui/Loader";
 
 const CityDetails = () => {
-  const baseURL = "http://127.0.0.1:8000/storage/";
-
   const { slug } = useParams<{ slug: string }>();
-  const [city, setCity] = useState<City | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const dispatch = useDispatch<AppDispatch>();
+  const { city, loading, error } = useSelector(
+    (state: RootState) => state.detailsCities
+  );
 
   useEffect(() => {
-    apiClient
-      .get(`/city/${slug}`)
-      .then((response) => {
-        setCity(response.data.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setLoading(false);
-      });
-  }, [slug]);
+    if (slug) {
+      dispatch(fetchCityDetailsBySlug(slug));
+    }
+  }, [slug, dispatch]);
 
   if (loading) {
     return (
@@ -36,6 +30,7 @@ const CityDetails = () => {
       </div>
     );
   }
+
   if (error) {
     return <p>Error loading data: {error}</p>;
   }
@@ -48,7 +43,7 @@ const CityDetails = () => {
     <>
       <Navbar />
       <Header />
-      <div className="grid md:grid-cols-3 gap-[30px] mt-[200px] mx-4">
+      <div className="grid md:grid-cols-3 gap-[30px] mt-[200px] mx-auto container px-4">
         {city.officeSpaces.map((office) => (
           <Link to={`/office/${office.slug}`}>
             <OfficeCard key={office.id} office={office} />
