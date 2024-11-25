@@ -8,6 +8,7 @@ import { bookingSchema } from "../../types/validationBooking";
 import { IoLocationSharp } from "react-icons/io5";
 import { BiCheckShield, BiCalendar, BiEditAlt } from "react-icons/bi";
 import mandiri from "../../assets/images/mandiri.png";
+import Loader from "../ui/Loader";
 
 const BookCard = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -67,7 +68,11 @@ const BookCard = () => {
   console.log("Submitting formData:", formData);
 
   if (Loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="flex justify-center items-center">
+        <Loader />
+      </div>
+    );
   }
   if (Error) {
     return <p>Error loading data: {Error}</p>;
@@ -154,10 +159,8 @@ const BookCard = () => {
             <div className="pt-10 px-8">
               <p className="font-semibold text-[20px]">Complete The Details</p>
 
-              <div className="flex flex-col gap-2">
-                <label htmlFor="name" className="font-semibold">
-                  Full Name
-                </label>
+              <div className="flex flex-col gap-2 mt-4">
+                <label className="font-semibold">Full Name</label>
                 <div className="flex items-center rounded-full border border-[#000929] px-5 gap-[10px] transition-all duration-300 focus-within:ring-2 focus-within:ring-[#0D903A]">
                   <BiCheckShield className="w-6 h-6 text-[#8DD3BB]" />
                   <input
