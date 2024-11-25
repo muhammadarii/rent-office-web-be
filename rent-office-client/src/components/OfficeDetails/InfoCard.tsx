@@ -6,7 +6,6 @@ import { useEffect } from "react";
 import { fetchOfficeDetailsBySlug } from "../../redux/slice/officeDetailsSlice";
 import { FaLocationDot } from "react-icons/fa6";
 import { BiCheckDouble } from "react-icons/bi";
-import Loader from "../ui/Loader";
 
 const InfoCard = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -20,11 +19,7 @@ const InfoCard = () => {
   }, [slug, dispatch]);
 
   if (!office) {
-    return (
-      <p>
-        <Loader />
-      </p>
-    );
+    return <div></div>;
   }
   return (
     <>
