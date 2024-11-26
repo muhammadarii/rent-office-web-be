@@ -5,6 +5,7 @@ import OfficeDetails from "./pages/OfficeDetails";
 import BookOffice from "./pages/BookOffice";
 import SuccessBooking from "./pages/SuccessBooking";
 import CheckBooking from "./pages/CheckBooking";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/office/:slug/book" element={<BookOffice />} />
         <Route path="/success-booking" element={<SuccessBooking />} />
         <Route path="/check-booking" element={<CheckBooking />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   );
