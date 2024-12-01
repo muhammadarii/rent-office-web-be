@@ -49,7 +49,7 @@ const InfoCard = () => {
           Anda melalui WhatsApp
         </p>
         <Link to={"/check-booking"}>
-          <div className="flex items-center border-2 justify-center w-full rounded-full mb-10 p-[16px_26px] mt-10 gap-3 bg-[#8DD3BB] font-bold text-[#F7F7FD] hover:bg-white hover:border-2 hover:border-[#8DD3BB] hover:text-[#8DD3BB]">
+          <div className="flex items-center border-2 justify-center w-full rounded-full mb-10 p-[16px_26px] mt-10 gap-3 hover:bg-[#8DD3BB] font-bold text-[#8DD3BB] bg-white border-[#8DD3BB] hover:text-white">
             <span>View Booking Details</span>
           </div>
         </Link>
