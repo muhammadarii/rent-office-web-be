@@ -7,7 +7,7 @@ import Header from "../components/CityDetails/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../redux/store";
 import { useEffect } from "react";
-import { fetchCityDetailsBySlug } from "../redux/slice/citydetailsSlice";
+import { fetchCityDetailsBySlug } from "../redux/slice/cityDetailsSlice";
 import Loader from "../components/ui/Loader";
 
 const CityDetails = () => {

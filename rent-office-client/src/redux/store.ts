@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import citiesReducer from "../redux/slice/citiesSlice";
 import officesReducer from "../redux/slice/officesSlice";
-import detailsCitiesReducer from "../redux/slice/citydetailsSlice";
+import detailsCitiesReducer from "./slice/cityDetailsSlice";
 import detailsOfficesReducer from "../redux/slice/officeDetailsSlice";
 
 export const store = configureStore({
