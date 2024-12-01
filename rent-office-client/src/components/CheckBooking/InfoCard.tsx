@@ -76,12 +76,9 @@ const InfoCard = () => {
   const BaseURL = "http://127.0.0.1:8000/storage";
 
   return (
-    <>
-      <div
-        id="Banner"
-        className="relative w-full h-[240px] flex items-center shrink-0 overflow-hidden -mb-[50px]"
-      >
-        <h1 className="text-center mx-auto font-extrabold text-[40px] leading-[60px] text-white mb-5 z-20">
+    <div className="font-poppins">
+      <div className="relative w-full h-[240px] flex items-center shrink-0 overflow-hidden -mb-[50px]">
+        <h1 className="text-center mx-auto font-extrabold md:text-[40px] leading-[60px] text-white mb-5 z-20">
           View Your Booking Details
         </h1>
         <div className="absolute w-full h-full bg-[linear-gradient(180deg,_rgba(0,0,0,0)_0%,#000000_91.83%)] z-10" />
@@ -92,12 +89,12 @@ const InfoCard = () => {
         />
       </div>
 
-      <section className="relative flex flex-col w-[930px] shrink-0 gap-[30px] mx-auto mb-[100px] z-20">
+      <section className="relative flex flex-col md:w-[930px] shrink-0 gap-[30px] mx-auto mb-[100px] z-20 portrait:px-4">
         <form
           onSubmit={handlesSubmit}
-          className="flex items-end rounded-[20px] border border-[#E0DEF7] p-[30px] gap-[16px] bg-white"
+          className="md:flex items-end rounded-[20px] border border-[#E0DEF7] p-[30px] gap-[16px] bg-white "
         >
-          <div className="flex flex-col w-full gap-2">
+          <div className="flex flex-col w-full gap-2 ">
             <label className="font-semibold">Booking TRX ID</label>
             <div className="flex items-center rounded-full border border-[#000929] px-5 gap-[10px] transition-all duration-300 focus-within:ring-2 focus-within:ring-[#8DD3BB]">
               <LuNewspaper className="w-6 h-6" />
@@ -115,7 +112,7 @@ const InfoCard = () => {
               error.path.includes("booking_trx_id")
             ) && <p>Booking TRX ID is required</p>}
           </div>
-          <div className="flex flex-col w-full gap-2">
+          <div className="flex flex-col w-full gap-2 portrait:mb-4 ">
             <label htmlFor="phone" className="font-semibold">
               Phone Number
             </label>
@@ -138,7 +135,7 @@ const InfoCard = () => {
           <button
             disabled={isLoading}
             type="submit"
-            className="flex items-center justify-center rounded-full p-[12px_30px] gap-3 bg-[#0D903A] font-bold text-[#F7F7FD]"
+            className="flex items-center justify-center rounded-full  p-[12px_30px] gap-3 bg-[#0D903A] font-bold text-[#F7F7FD]"
           >
             <span className="text-nowrap">
               {isLoading ? "Loading..." : "Check Booking"}
@@ -147,7 +144,7 @@ const InfoCard = () => {
         </form>
 
         {bookingDetails && (
-          <div className="grid grid-cols-2 gap-[30px]">
+          <div className="grid md:grid-cols-2 gap-[30px] ">
             <div className="flex flex-col h-fit shrink-0 rounded-[20px] border border-[#E0DEF7] p-[30px] gap-[30px] bg-white">
               <div className="flex items-center gap-4">
                 <div className="flex shrink-0 w-[140px] h-[100px] rounded-[20px] overflow-hidden">
@@ -249,7 +246,7 @@ const InfoCard = () => {
               </div>
               <hr className="border-[#F6F5FD]" />
               <h2 className="font-bold">Bonus Packages For You</h2>
-              <div className="flex justify-between">
+              <div className="flex md:flex-row flex-col items-center justify-between portrait:gap-10">
                 <div className="flex items-center gap-4">
                   <FiCoffee className="w-8 h-8 text-[#0D903A]" />
                   <div className="flex flex-col gap-[2px]">
@@ -274,7 +271,7 @@ const InfoCard = () => {
           </div>
         )}
       </section>
-    </>
+    </div>
   );
 };
 

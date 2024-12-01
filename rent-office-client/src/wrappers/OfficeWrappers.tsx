@@ -29,8 +29,8 @@ const OfficeWrappers = () => {
   }
 
   return (
-    <>
-      <h2 className="font-extrabold font-poppins md:text-[32px] md:leading-[48px] text-center my-10">
+    <div>
+      <h2 className="font-extrabold md:text-[32px] md:leading-[48px] text-center my-10">
         Browse Our Fresh Space.
         <br />
         For Your Better Productivity.
@@ -42,7 +42,7 @@ const OfficeWrappers = () => {
           </Link>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

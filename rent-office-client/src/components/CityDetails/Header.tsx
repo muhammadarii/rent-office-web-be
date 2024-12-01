@@ -36,11 +36,13 @@ const Header = () => {
         alt="Header"
         className="rounded-2xl w-full h-[300px] md:h-[400px] object-cover"
       />
-      <div className="bg-white w-[800px] h-[250px] rounded-xl absolute top-[100%] left-[50%] translate-x-[-50%] translate-y-[-50%] shadow-xl border-2 border-[#8DD3BB]">
+      <div className="bg-white portrait:w-full portrait:h-[200px] w-[800px] h-[250px] rounded-xl absolute top-[100%] left-[50%] translate-x-[-50%] translate-y-[-50%] shadow-xl border-2 border-[#8DD3BB]">
         <div className="absolute top-[50%] left-[40%] translate-x-[-50%] translate-y-[-50%]">
-          <h1 className="text-2xl font-bold">Great Office In</h1>
-          <h1 className="text-5xl font-bold mb-4">{city.name} City</h1>
-          <span>
+          <h1 className="md:text-2xl font-bold">Great Office In</h1>
+          <h1 className="text-2xl md:text-5xl font-bold mb-4">
+            {city.name} City
+          </h1>
+          <span className="portrait:text-xs">
             Kantor yang tepat dapat memberikan impact pekerjaan menjadi lebih
             baik dan sehat dalam tumbuhkan karir.
           </span>
