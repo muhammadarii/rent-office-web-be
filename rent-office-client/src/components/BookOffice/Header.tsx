@@ -36,7 +36,7 @@ const Header = () => {
     <>
       <div className="relative w-full h-[440px] -z-10">
         <div className="absolute w-full h-full bg-[linear-gradient(180deg,_rgba(0,0,0,0)_0%,#000000_91.83%)] z-10" />
-        <p className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-bold text-[60px] border-4 border-[#8DD3BB] px-10 z-10 text-white cursor-default">
+        <p className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-bold text-[40px] portrait:text-center md:text-[60px] border-4 border-[#8DD3BB] px-10 z-10 text-white cursor-default">
           {office.name}
         </p>
         <img

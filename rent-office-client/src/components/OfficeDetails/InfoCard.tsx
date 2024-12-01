@@ -23,8 +23,8 @@ const InfoCard = () => {
   }
   return (
     <>
-      <div className="flex flex-row justify-center items-start gap-4 mt-[-80px]">
-        <div className="bg-white border-2 border-[#8DD3BB] w-[800px] h-auto pb-14 rounded-xl shadow-xl">
+      <div className="flex flex-col md:flex-row justify-center items-start gap-4 mt-[-80px] portrait:px-4">
+        <div className="bg-white border-2 border-[#8DD3BB] md:w-[800px] h-auto pb-14 rounded-xl shadow-xl">
           <div className="pt-8 px-8">
             <h1 className="font-bold text-[30px]">{office.name}</h1>
             <div className="flex flex-row gap-2 items-baseline">
@@ -32,7 +32,9 @@ const InfoCard = () => {
               <p className="font-semibold text-[20px]">{office.city.name}</p>
             </div>
           </div>
-          <p className="pt-8 px-8 font-medium ">{office.about}</p>
+          <p className="pt-8 px-8 font-medium potrait:text-xs">
+            {office.about}
+          </p>
           <div className="pt-8 px-8">
             <h1 className="font-bold text-[20px]">Office Address</h1>
             <p className="font-medium">{office.name}</p>
@@ -45,7 +47,7 @@ const InfoCard = () => {
             />
           </div>
         </div>
-        <div className="bg-white border-2 border-[#8DD3BB] w-[500px] h-auto pb-10 rounded-xl shadow-xl">
+        <div className="bg-white border-2 border-[#8DD3BB] md:w-[500px] h-auto pb-10 rounded-xl shadow-xl">
           <div className="pt-8 px-8">
             <p className="font-bold text-[30px]">
               Rp.{office.price.toLocaleString("id")}
@@ -59,8 +61,10 @@ const InfoCard = () => {
                   key={benefit.id}
                   className="flex flex-row gap-4 mt-2 items-center"
                 >
-                  <BiCheckDouble className="w-8 h-8 text-[#8DD3BB]" />
-                  <p className="font-semibold text-[15px]">{benefit.name}</p>
+                  <BiCheckDouble className="md:w-8 md:h-8 text-[#8DD3BB]" />
+                  <p className="font-semibold text-[15px] portrait:text-[12px]">
+                    {benefit.name}
+                  </p>
                 </div>
               ))}
             </div>

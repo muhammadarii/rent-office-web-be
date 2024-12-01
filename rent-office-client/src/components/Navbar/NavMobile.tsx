@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const NavMobile = () => {
   const navLinks = [
-    { path: "/", label: "Browse" },
+    { path: "/", label: "Home" },
     { path: "/popular", label: "Popular" },
     { path: "/categories", label: "Categories" },
     { path: "/events", label: "Events" },

@@ -136,8 +136,11 @@ const BookCard = () => {
     <>
       <div className="flex flex-row justify-center items-start gap-4 mt-[-80px] z-10">
         {/* info booking */}
-        <form onSubmit={handlesSubmit} className="flex gap-4 justify-between">
-          <div className="bg-white border-2 border-[#8DD3BB] w-[700px] h-auto pb-14 rounded-xl shadow-xl">
+        <form
+          onSubmit={handlesSubmit}
+          className="flex gap-4 flex-col md:justify-between"
+        >
+          <div className="bg-white border-2 border-[#8DD3BB] w-[380px] md:w-[700px] h-auto pb-14 rounded-xl shadow-xl">
             <div className="pt-10 pl-8 flex flex-row gap-4">
               <div className="flex shrink-0 w-[140px] h-[100px] rounded-[20px] overflow-hidden">
                 <img
@@ -169,7 +172,7 @@ const BookCard = () => {
                     onChange={handleChange}
                     value={formData.name}
                     id="name"
-                    className="appearance-none outline-none w-full py-3 font-semibold placeholder:font-normal placeholder:text-[#000929]"
+                    className="appearance-none outline-none md:w-full py-3 font-semibold placeholder:font-normal placeholder:text-[#000929]"
                     placeholder="Write your complete name"
                   />
                   {fomrErrors.find((error) => error.path.includes("name")) && (
@@ -226,7 +229,7 @@ const BookCard = () => {
             </div>
           </div>
           {/* detail payment */}
-          <div className="bg-white border-2 border-[#8DD3BB] w-[500px] h-auto pb-14 rounded-xl shadow-xl">
+          <div className="bg-white border-2 border-[#8DD3BB] w-[380px] md:w-[500px] h-auto pb-14 rounded-xl shadow-xl">
             <div className="pt-10 px-8">
               <p className="font-semibold text-[20px] flex justify-center items-center">
                 Your Order Details
