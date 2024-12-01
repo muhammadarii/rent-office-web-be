@@ -138,7 +138,7 @@ const BookCard = () => {
         {/* info booking */}
         <form
           onSubmit={handlesSubmit}
-          className="flex gap-4 flex-col md:justify-between"
+          className="flex gap-4 flex-col md:flex-row md:justify-between"
         >
           <div className="bg-white border-2 border-[#8DD3BB] w-[380px] md:w-[700px] h-auto pb-14 rounded-xl shadow-xl">
             <div className="pt-10 pl-8 flex flex-row gap-4">
@@ -254,7 +254,7 @@ const BookCard = () => {
               </div>
               <div className="flex justify-between items-center mt-4">
                 <p className="font-bold text-[20px]">Grand Total</p>
-                <p className="font-bold text-[20px] text-[#0D903A]">
+                <p className="font-bold text-[20px] text-[#8DD3BB]">
                   -Rp.{" "}
                   {totalAmountWithUniqueCode.toLocaleString("id", {
                     minimumFractionDigits: 0,
@@ -274,7 +274,7 @@ const BookCard = () => {
                 <div className="flex flex-col gap-[2px] mt-4">
                   <div className="flex items-center gap-1">
                     <p className="font-semibold">M Ari Purnomo Aji</p>
-                    <BiCheckShield className="w-5 h-5 text-[#0D903A]" />
+                    <BiCheckShield className="w-5 h-5 text-[#8DD3BB]" />
                   </div>
                   <p>008883232818328</p>
                 </div>
@@ -282,7 +282,7 @@ const BookCard = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="flex items-center mt-8 justify-center w-full rounded-full p-[16px_26px] gap-3 bg-[#0D903A] font-bold text-[#F7F7FD]"
+                className="flex items-center mt-8 border border-[#8DD3BB] text-[#8DD3BB] justify-center w-full rounded-full p-[16px_26px] gap-3 hover:bg-[#8DD3BB] font-bold hover:text-white"
               >
                 <span>{isLoading ? "Loading..." : "I’ve Already Paid"}</span>
               </button>

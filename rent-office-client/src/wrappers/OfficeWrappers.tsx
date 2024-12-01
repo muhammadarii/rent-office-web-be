@@ -28,6 +28,8 @@ const OfficeWrappers = () => {
     return <p>Error loading data: {error}</p>;
   }
 
+  // const limitedOffices = offices.slice(0, 6);
+
   return (
     <div>
       <h2 className="font-extrabold md:text-[32px] md:leading-[48px] text-center my-10">
@@ -36,7 +38,7 @@ const OfficeWrappers = () => {
         For Your Better Productivity.
       </h2>
       <div className="grid md:grid-cols-3 gap-[30px] mx-auto container px-4">
-        {offices.map((office) => (
+        {offices.slice(0, 3).map((office) => (
           <Link to={`/office/${office.slug}`}>
             <OfficeCard key={office.id} office={office} />
           </Link>

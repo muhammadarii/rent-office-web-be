@@ -135,7 +135,7 @@ const InfoCard = () => {
           <button
             disabled={isLoading}
             type="submit"
-            className="flex items-center justify-center rounded-full  p-[12px_30px] gap-3 bg-[#0D903A] font-bold text-[#F7F7FD]"
+            className="flex items-center justify-center rounded-full  p-[12px_30px] gap-3 text-[#8DD3BB] border border-[#8DD3BB] hover:bg-[#8DD3BB] font-bold hover:text-[#F7F7FD]"
           >
             <span className="text-nowrap">
               {isLoading ? "Loading..." : "Check Booking"}
