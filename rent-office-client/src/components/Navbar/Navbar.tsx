@@ -72,7 +72,12 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu Dropdown */}
-      {isMobileMenuOpen && <NavMobile />}
+
+      {isMobileMenuOpen && (
+        <div className="md:hidden fixed top-[49px] left-0 w-full h-full">
+          <NavMobile />
+        </div>
+      )}
     </div>
   );
 };
